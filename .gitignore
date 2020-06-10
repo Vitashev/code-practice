@@ -48,3 +48,4 @@ Thumbs.db
 # mock data
 scripts/json-server/data/
 scripts/json-server/generate.js
+.history
