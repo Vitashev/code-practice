@@ -15,6 +15,7 @@ limited-unit-tests-config.ts
 .classpath
 .c9/
 *.launch
+*.class
 .settings/
 *.sublime-workspace
 *.code-workspace

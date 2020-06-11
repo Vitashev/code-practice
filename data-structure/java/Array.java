@@ -7,13 +7,12 @@ public class Array {
         public static void main(String[] args) {
                 CustomArray ar = new CustomArray(1, 2, 3, 4, 5);
                 ar.push(6);
-        
-          ar.push(6);
-           ar.push(5);
-           ar.pop();
-      
-            
-               
+
+                ar.push(6);
+                ar.push(5);
+                ar.pop();
+                ar.unshift(9);
+
                 System.out.println(ar.getLength());
                 System.out.println(ar.toString());
 
@@ -63,7 +62,7 @@ public class Array {
                 }
 
                 public void pop() {
-                        if(length > 0){
+                        if (length > 0) {
                                 data[--length] = null;
                         }
                 }
@@ -79,30 +78,31 @@ public class Array {
                 }
 
                 public Object shift() {
-                        if(length > 0) {
+                        if (length > 0) {
 
                                 Object shiftedElement = data[0];
                                 for (int i = 0; i < length; i++) {
-                                        if (i+1 < data.length) {
-                                                data[i] = data[i+1];
-                                        }  
+                                        if (i + 1 < data.length) {
+                                                data[i] = data[i + 1];
+                                        }
                                 }
-                               data[--length] = null;
+                                data[--length] = null;
                                 return shiftedElement;
                         }
- 
+
                         return null;
                 }
-                // public void unshift(Object element) {
 
-                //         Object[] newAr = new Object[data.length];
-                //         if(length > data.length) {
-                //           for (int i = 1; i <= length; i++) {
-                //                 data[i] = ;
-                //            }
+                public void unshift(Object element) {
+                        Object[] newAr = new Object[++length];
 
-                //         }
-                // }
+                        newAr[0] = element;
+                        for (int i = 1, j = 0; i < length; i++, j++) {
+                                newAr[i] = data[j];
+                        }
+
+                        data = newAr;
+                }
         }
 
 }
