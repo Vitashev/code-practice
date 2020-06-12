@@ -118,9 +118,6 @@ class Stack {
          ++length;
 
       }
-      // struct Element* getTail(){
-      //    return *tail.value;
-      // };
 };
 
 int main () {
