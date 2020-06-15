@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 int* mergeSortedArrays(int* ar1, int* ar2, int size1, int size2){
