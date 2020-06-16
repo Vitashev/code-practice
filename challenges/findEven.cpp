@@ -24,3 +24,40 @@
 
 // 1 <= nums.length <= 500
 // 1 <= nums[i] <= 10^5
+
+#include <iostream>
+#include <math.h>  
+#include <vector>
+
+using namespace std;
+
+bool isEven(int& num){
+    int counter = 0;
+    int numObserver = num;
+
+    do{
+       counter++;
+
+       numObserver = ceil(numObserver/10);
+    } while(numObserver != 0) ;
+    
+    return counter%2 == 0;
+}
+
+
+int main() {
+    //{}
+    //{0}
+    vector<int> nums = {12,345,2,6,7896};
+
+    int evenCounter = 0;
+    for(auto &num: nums) {
+        if(isEven(num)){
+            evenCounter++;
+        }
+    }
+
+     cout<<evenCounter<<" evenCounter"<<endl;
+
+    return 0;
+}
