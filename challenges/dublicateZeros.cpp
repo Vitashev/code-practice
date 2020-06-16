@@ -22,37 +22,57 @@
 #include <stack>
 #include <deque>
 
-
 using namespace std;
 
 void duplicateZeros(vector<int>& arr){
     // stack<int> stack;
     deque<int> deque;
+    bool isPrevZero;
 
-    int counter = 0;
+    if(arr.size() > 1) {
+        isPrevZero = arr[0] == 0 ? true : false;
+        deque.push_back(arr[1]);
 
-    for(int i = 0; i < arr.size();i++){
+        for(int i = 1; i < arr.size(); i++){
+            if(i+1 < arr.size()){
+                deque.push_back(arr[i+1]);
+            }
 
-         if (arr[i] == 0 && counter != 0){
-           arr[i] = 0;
-           counter--;
-        } else if(deque.size() > 0 && arr[i] == 0){
-            counter+=2;
-           
-            arr[i] = deque.back();
-            deque.pop_back();
-        }  else if (arr[i] == 0){
-            counter++;
-        } else if(arr[i] != 0 && counter != 0) {
-            deque.push_front(arr[i]);
-            arr[i] = 0;
-            counter--;
-        } else if (arr[i] != 0 && counter == 0 && deque.size() > 0) {
-            deque.push_front(arr[i]);
-            arr[i] = deque.back();
-            deque.pop_back();
+            if(isPrevZero){
+                arr[i] = 0;
+                isPrevZero = false;
+            } else {
+                arr[i] = deque.front();
+                deque.pop_front();
+                isPrevZero = arr[i] == 0;
+            }
         }
     }
+
+    // int counter = 0;
+
+    // for(int i = 0; i < arr.size();i++){
+
+    //      if (arr[i] == 0 && counter != 0){
+    //        arr[i] = 0;
+    //        counter--;
+    //     } else if(deque.size() > 0 && arr[i] == 0){
+    //         counter+=2;
+           
+    //         arr[i] = deque.back();
+    //         deque.pop_back();
+    //     }  else if (arr[i] == 0){
+    //         counter++;
+    //     } else if(arr[i] != 0 && counter != 0) {
+    //         deque.push_front(arr[i]);
+    //         arr[i] = 0;
+    //         counter--;
+    //     } else if (arr[i] != 0 && counter == 0 && deque.size() > 0) {
+    //         deque.push_front(arr[i]);
+    //         arr[i] = deque.back();
+    //         deque.pop_back();
+    //     }
+    // }
 
     // deque<int> notNullDeque;
 
@@ -116,8 +136,12 @@ int main() {
 
     duplicateZeros(arr);
 
-    for(auto &it: arr){
-        cout<<it<<"it1"<<endl;
+    // for(auto &it: arr){
+    //     cout<<it<<"it1"<<endl;
+    // }
+
+    for(int i = 0; i < arr.size(); i++){
+        cout<<arr[i]<<"it1"<<endl;
     }
 
     return 0;
